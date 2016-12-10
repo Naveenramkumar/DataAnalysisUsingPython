@@ -20,7 +20,8 @@ User provides the year and month in (yyyymm) for which they need prediction, lin
         Usage : Analysis3.py 201703
                 (Analysis3.py yyyymm)
 
-#Analysis 4 - Find Air Quality Index for a state and a particular year. User provides the state and year for which the air quality index for the gases is needed. The script iterates through the folder based on state and looks through the file with the name State_Year
+#Analysis 4 - Find Air Quality Index for a state and a particular year. 
+User provides the state and year for which the air quality index for the gases is needed. The script iterates through the folder based on state and looks through the file with the name State_Year
         
         Usage : Analysis4.py Arizona 2015
                 (Aanalysis4.py State yyyy)
