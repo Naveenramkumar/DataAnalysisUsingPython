@@ -40,6 +40,7 @@ elif len(sys.argv) == 4:
 elif len(sys.argv) == 5:
     searchTerm = str(sys.argv[1])+"%3B"+str(sys.argv[2])+"%3B"+str(sys.argv[3])+"%3B"+str(sys.argv[4])
     
+print(searchTerm)
 temp=[]
 listQuestions=[]
 
@@ -49,8 +50,8 @@ f2=open('Analysis3.txt','w+')
 f3=open('Analysis4.txt','w+')
 f4=open('Analysis5.txt','w+')
 
-for page in range(1,6):
-    url="https://api.stackexchange.com/2.2/search?key=bSd75nhdHPb4nQOeqZnKpg((&intitle=pandas&site=stackoverflow&order=desc&sort=activity&pagesize=100&page="+str(page)
+for page in range(1,2):
+    url="https://api.stackexchange.com/2.2/search?key=bSd75nhdHPb4nQOeqZnKpg((&intitle=pandas&site=stackoverflow&order=desc&sort=activity&pagesize=5&page="+str(page)
     response = requests.get(url)
     responseJson = response.json()
     list_json=responseJson["items"]
@@ -62,8 +63,8 @@ for i in temp:
     dictQuestions["title"] = i["title"]
     listQuestions.append(dictQuestions)
     
-for i in range(0,500):
-    urlProfile="https://api.stackexchange.com/2.2/users/"+str(listQuestions[i]["user_id"])+"/badges?order=desc&key=bSd75nhdHPb4nQOeqZnKpg((&sort=rank&site=stackoverflow&pagesize=100"
+for i in range(0,5):
+    urlProfile="https://api.stackexchange.com/2.2/users/"+str(listQuestions[i]["user_id"])+"/badges?order=desc&key=bSd75nhdHPb4nQOeqZnKpg((&sort=rank&site=stackoverflow&pagesize=10"
     responseProfile=requests.get(urlProfile)
     responseProfileJson=responseProfile.json()
     badgeCount=len(responseProfileJson["items"])
@@ -82,13 +83,14 @@ for i in range(0,500):
     listQuestions[i]["goldCount"]=goldCount
     listQuestions[i]["bronzeCount"]=bronzeCount
     listQuestions[i]["badgeCount"]=badgeCount
+    
 
-#print(listQuestions)    
+print(listQuestions)    
 sortedList=sorted(listQuestions,key=itemgetter("badgeCount"),reverse=True)
 f.write(str(sortedList))
 
 
-for i in range(0,500):
+for i in range(0,len(listQuestions)):
     urlTags="https://api.stackexchange.com/2.2/users/"+str(listQuestions[i]["user_id"])+"/tags?order=desc&sort=popular&site=stackoverflow&key=bSd75nhdHPb4nQOeqZnKpg(("
     responseTags=requests.get(urlTags)
     responseTagsJson=responseTags.json()
@@ -101,8 +103,8 @@ for i in range(0,500):
 
 
 temp1=[]
-for i in range(1,6):
-    urlSearch="https://api.stackexchange.com/2.2/search?order=desc&key=bSd75nhdHPb4nQOeqZnKpg((&sort=activity&intitle="+searchTerm+"&pagesize=100&page="+str(i)+"&site=stackoverflow"
+for i in range(1,2):
+    urlSearch="https://api.stackexchange.com/2.2/search?order=desc&key=bSd75nhdHPb4nQOeqZnKpg((&sort=activity&intitle="+searchTerm+"&pagesize=5&page="+str(i)+"&site=stackoverflow"
     #url="https://api.stackexchange.com/2.2/search?key=bSd75nhdHPb4nQOeqZnKpg((&intitle=pandas&site=stackoverflow&order=desc&sort=activity&pagesize=100&page="+str(page)
     responseSearch = requests.get(urlSearch)
     responseSearchJson = responseSearch.json()
@@ -136,9 +138,9 @@ f2.write("Silver Count : "+str(totalSilverCount))
 f2.write("Bronze Count : "+str(totalBronzeCount))
 f2.write("Badges Count : "+str(totalBadgesCount))
 
-for i in range(0,500):
-    urlQue="https://api.stackexchange.com/2.2/users/"+str(listQuestions[i]["user_id"])+"/questions?order=desc&site=stackoverflow&pagesize=100&key=bSd75nhdHPb4nQOeqZnKpg(("
-    urlAns="https://api.stackexchange.com/2.2/users/"+str(listQuestions[i]["user_id"])+"/answers?order=desc&site=stackoverflow&pagesize=100&key=bSd75nhdHPb4nQOeqZnKpg(("
+for i in range(0,len(listQuestions)):
+    urlQue="https://api.stackexchange.com/2.2/users/"+str(listQuestions[i]["user_id"])+"/questions?order=desc&site=stackoverflow&pagesize=10&key=bSd75nhdHPb4nQOeqZnKpg(("
+    urlAns="https://api.stackexchange.com/2.2/users/"+str(listQuestions[i]["user_id"])+"/answers?order=desc&site=stackoverflow&pagesize=10&key=bSd75nhdHPb4nQOeqZnKpg(("
     score=0
     scoreAns=0
     queResponse=requests.get(urlQue)

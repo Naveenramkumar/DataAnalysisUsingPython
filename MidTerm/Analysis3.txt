@@ -1,0 +1,4 @@
+Gold Count   : 0
+Silver Count : 1
+Bronze Count : 27
+Badges Count : 28
