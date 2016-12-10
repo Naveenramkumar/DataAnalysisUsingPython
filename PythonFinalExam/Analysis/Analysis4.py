@@ -1,19 +1,21 @@
-
-# coding: utf-8
-
-# In[12]:
-
 #Analysis 4 : Find Air Quality Index for a state and a particular year
 import glob
 import pandas as pd
 import calendar
 from datetime import datetime
 import matplotlib.pyplot as plt
+import sys
+import numbers
+
+if len(sys.argv) != 3:
+    print("Invalid call to the script : Please provide year and month in yyyy format")
+    sys.exit(2)
+
 
 df=pd.read_csv("/Users/Gany/Desktop/PythonFinalExam/InputFiles/PollutionDataModified.csv")
-stateProvided = "Arizona"
-yearProvided = 2015
-dfs=""
+stateProvided = str(sys.argv[1])
+yearProvided = int(sys.argv[2])
+dfs=pd.DataFrame
 if stateProvided in df["State"].unique():
     if yearProvided in df[df["State"] == stateProvided]["year"].unique():
         
@@ -51,9 +53,3 @@ if stateProvided in df["State"].unique():
 else:
     print("Invalid State Provided")
     exit
-
-
-# In[ ]:
-
-
-

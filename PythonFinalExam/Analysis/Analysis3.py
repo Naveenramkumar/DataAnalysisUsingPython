@@ -1,15 +1,24 @@
 
-# coding: utf-8
-
-# In[ ]:
-
 #Analysis 3: Predict the gases mean in future - Based on Linear regression
 import matplotlib.pyplot as plt
 import calendar
 import pylab as pl
 import pandas as pd
 from datetime import datetime
-f3=open('/Users/Gany/Desktop/PythonFinalExam/OutputFiles/Analysis3_Output.txt','w+')
+import argparse
+import sys
+import csv
+
+if len(sys.argv) != 2:
+    print("Invalid call to the script : Please provide year and month in yyyymm format")
+    sys.exit(2)
+
+N=str(sys.argv[1])
+
+if len(N) != 6:
+    print("Invalid Input Provided. Please provide year and month in yyyymm format")
+    sys.exit(2)
+    
 df=pd.read_csv("/Users/Gany/Desktop/PythonFinalExam/InputFiles/PollutionDataModified.csv")
 
 def covariance(A,B):
@@ -108,15 +117,17 @@ def findCO(year):
     slope=LinearRegressionSlope(a,b)
     constant=LinearRegressionConstant(a,b)
     return (slope*year)+constant
+with open('/Users/Gany/Desktop/PythonFinalExam/OutputFiles/Analysis3_Output.csv','w') as csvfile:
+    writerrecord=csv.writer(csvfile, delimiter=',')
+    writerrecord.writerow(['Gases','Predicted Emission'])
+    writerrecord.writerow(['Predicted NO2Mean',findNO2(int(N))])
 
-f3.write('The Predicted NO2Mean at the given year : ')
-f3.write(findNO2(201703))
-f3.write('The Predicted COMean at the given year : ')
-f3.write(findCO(201703))
-f3.write('The Predicted O3Mean at the given year : ')
-f3.write(findO3(201703))
-f3.write('The Predicted SO2Mean at the given year : ')
-f3.write(findSO2(201703))
+    writerrecord.writerow(['Predicted COMean',findCO(int(N))])
+
+    writerrecord.writerow(['Predicted O3Mean',findO3(int(N))])
+
+    writerrecord.writerow(['Predicted SO2Mean',findSO2(int(N))])
+
 
 
 a=list(df["monthyear"].astype(int).unique())
@@ -147,9 +158,5 @@ plt.ylabel('NO2Mean')
 
 ax.plot([d[0],d[len(d)-1]], [findNO2(a[0]),findNO2(a[len(a)-1])], c='b')
 plt.show()
-
-
-# In[ ]:
-
 
 
