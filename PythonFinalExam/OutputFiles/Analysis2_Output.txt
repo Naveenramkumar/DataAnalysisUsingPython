@@ -1,3 +1,0 @@
-Closest State and distance :  Arizona 0.0
-Second Closest State and distance :  Arizona 0.028441999999999967
-Third Closest State and distance :  Arizona 0.06459600000000004

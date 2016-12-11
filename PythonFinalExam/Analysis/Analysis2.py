@@ -1,13 +1,21 @@
-
-# coding: utf-8
-
-# In[ ]:
-
 #Analysis 2 : Recommending State for the specified Gas emission values - KNN Algorithm
 import calendar
+import csv
 import pandas as pd
 from datetime import datetime
-f2=open('/Users/Gany/Desktop/PythonFinalExam/OutputFiles/Analysis2_Output.csv','w+')
+import sys
+if len(sys.argv) != 5:
+    print("Invalid call to script. \n Usage : python Analysis2.py 15.173913 3.52 6.01 1.61")
+    
+try:
+    inp1 = float(sys.argv[1])
+    inp2 = float(sys.argv[2])
+    inp3 = float(sys.argv[3])
+    inp4 = float(sys.argv[4])
+except ValueError:
+    print("Input is not a Float")
+    sys.exit(2)
+    
 df=pd.read_csv("/Users/Gany/Desktop/PythonFinalExam/InputFiles/PollutionDataModified.csv")
 
 distance1=10000;
@@ -17,7 +25,7 @@ state3=""
 state2=""
 state1=""
 for i in df.index.values:
-    distance = ((float(df.loc[i,"NO2Mean"])-25.173913)**2 + (float(df.loc[i,"SO2Mean"])-0.5217390000000001)**2 + (float(df.loc[i,"O3Mean"])-0.0135)**2 + (float(df.loc[i,"COMean"])-0.617391)**2)**(1/2)
+    distance = ((float(df.loc[i,"NO2Mean"])-inp1)**2 + (float(df.loc[i,"SO2Mean"])-inp2)**2 + (float(df.loc[i,"O3Mean"])-inp3)**2 + (float(df.loc[i,"COMean"])-inp4)**2)**(1/2)
     if distance1>distance:
         distance3=distance2
         distance2=distance1
@@ -33,16 +41,12 @@ for i in df.index.values:
     elif distance3>distance:
         distance3=distance
         state3=df.loc[i,"State"]
-f2.write('Term','State','Distance')               
-f2.write('Closest State and distance : ',state1,'--->',distance1)
+with open('/Users/Gany/Desktop/PythonFinalExam/OutputFiles/Analysis2_Output.csv','w') as csvfile:
+    writerrecord=csv.writer(csvfile, delimiter=',')
+    writerrecord.writerow(['Index','State','Distance'])
+               
+    writerrecord.writerow(['Closest',state1,distance1])
 
-f2.write('Second Closest State and distance : ',state2,'--->',distance2)
+    writerrecord.writerow(['Second Closest',state2,distance2])
 
-f2.write('Third Closest State and distance : ',state3,'--->',distance3)
-f2.close()
-
-
-# In[ ]:
-
-
-
+    writerrecord.writerow(['Third Closest',state3,distance3])

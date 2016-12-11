@@ -7,6 +7,8 @@
 import calendar
 import pandas as pd
 from datetime import datetime
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 df=pd.read_csv("/Users/Gany/Desktop/PythonFinalExam/InputFiles/PollutionDataModified.csv")
 
@@ -23,9 +25,6 @@ for m in list(df["month"].unique()):
         y=(z*100)/x
         gasEmmisionPerMonth=gasEmmisionPerMonth.append(pd.DataFrame({"gases": l,"month":monthInt,"averageEmission":y}, index=[0]))
        
-get_ipython().magic('matplotlib inline')
-import matplotlib.pyplot as plt
-import seaborn as sns
 gasEmmisionPerMonth = gasEmmisionPerMonth.pivot("gases","month","averageEmission")
 fig, ax = plt.subplots(figsize=(20,5))
 ax = sns.heatmap(gasEmmisionPerMonth, linewidth=1, annot=True)
@@ -33,5 +32,6 @@ monthStr = []
 for i in range(1,len(df["month"].unique())+1):
     monthStr.append(calendar.month_abbr[i])
 ax.set_xticklabels(monthStr,rotation=30)
+plt.savefig("/Users/Gany/Desktop/PythonFinalExam/OutputFiles/Analysis1_Output.png")
 print("Average Gas Emitted per Month")
 

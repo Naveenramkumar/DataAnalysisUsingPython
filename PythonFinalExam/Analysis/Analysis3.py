@@ -1,4 +1,3 @@
-
 #Analysis 3: Predict the gases mean in future - Based on Linear regression
 import matplotlib.pyplot as plt
 import calendar
@@ -8,7 +7,6 @@ from datetime import datetime
 import argparse
 import sys
 import csv
-
 if len(sys.argv) != 2:
     print("Invalid call to the script : Please provide year and month in yyyymm format")
     sys.exit(2)
@@ -157,6 +155,4 @@ plt.ylabel('NO2Mean')
 
 
 ax.plot([d[0],d[len(d)-1]], [findNO2(a[0]),findNO2(a[len(a)-1])], c='b')
-plt.show()
-
-
+plt.savefig('/Users/Gany/Desktop/PythonFinalExam/OutputFiles/Analysis3Graph.png')

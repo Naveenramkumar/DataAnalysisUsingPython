@@ -8,7 +8,7 @@ import sys
 import numbers
 
 if len(sys.argv) != 3:
-    print("Invalid call to the script : Please provide year and month in yyyy format")
+    print("Invalid call to the script : Please provide State and Year in yyyy format")
     sys.exit(2)
 
 
@@ -40,13 +40,35 @@ if stateProvided in df["State"].unique():
             #print(mon,"-->",aqiNO2,"-->",aqiCO,"-->",aqiSO2,"-->",aqiO3)
             #ax = plt.subplot(111)
             #ax.bar(x-0.2, y,width=0.2,color='b',align='center')
-        multiple_bars = plt.figure()
-        
-        ax = plt.subplot(111)
-        ax.bar(monthX, no2,width=0.2,color='b',align='center')
-        plt.xlabel("Months")
-        plt.ylabel("NO2 AQI")
-        plt.show()
+        pos = list(range(len(monthX)))
+        width = 0.1
+
+        # Plotting the bars
+        fig, ax = plt.subplots(figsize=(10,5))
+        plt.bar(pos,no2,width,alpha=0.5,color='r',label=monthX[0])
+        plt.bar([p + width for p in pos],co,width,alpha=0.5,color='g',label=monthX[1])
+        plt.bar([p + width*2 for p in pos],so2,width,alpha=0.5,color='b',label=monthX[2])
+        plt.bar([p + width*3 for p in pos],o3,width,alpha=0.5,color='y',label=monthX[3])
+        ax.set_ylabel('Air Quality Index')
+        ax.set_xlabel('Month')
+        # Set the chart's title
+        ax.set_title('Air Quality Index')
+
+        # Set the position of the x ticks
+        ax.set_xticks([p + 1.5 * width for p in pos])
+
+        # Set the labels for the x ticks
+        ax.set_xticklabels(monthX)
+
+        # Setting the x-axis and y-axis limits
+        plt.xlim(min(pos)-width, max(pos)+width*4)
+        #plt.ylim([0, max(no2,co,so2,o3)] )
+
+        # Adding the legend and showing the plot
+        plt.legend(['NO2 AQI','CO AQI','SO2 AQI','O3 AQI'], loc='upper left')
+        plt.grid()
+
+        plt.savefig('/Users/Gany/Desktop/PythonFinalExam/OutputFiles/Analysis4Graph.png')
     else:
         print("Invalid Year Provided")
         exit

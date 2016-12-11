@@ -1,11 +1,6 @@
 
-# coding: utf-8
-
-# In[ ]:
-
 #Pre-Analysis Script : Cleaning and Structuring Data
 import pandas as pd
-import subprocess
 import os
 from datetime import datetime
 df=pd.read_csv("/Users/Gany/Desktop/PythonFinalExam/InputFiles/USPollutionData.csv")
@@ -21,7 +16,7 @@ df = df[pd.to_numeric(df["year"]) > 2014]
 df.to_csv("/Users/Gany/Desktop/PythonFinalExam/InputFiles/PollutionDataModified.csv")
 fileName = "/Users/Gany/Desktop/createFolders.sh"
 file = open(fileName, "w")
-rmCommand='''rm -rF /Users/Gany/Desktop/PythonProject \n'''
+rmCommand='''rm -Rf /Users/Gany/Desktop/PythonProject \n'''
 file.write(rmCommand)
 baseString = "mkdir -p /Users/Gany/Desktop/PythonProject/"
 for s in list(df["State"].unique()):
