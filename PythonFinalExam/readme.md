@@ -6,7 +6,7 @@ Execution of this script will clean the data and structure the data in the form 
         Usage : Pre_Analysis_Script.py
         
         Clean - Outliers
-        https://raw.github.com/ganydakshin/DataAnalysisUsingPython/PythonFinalExam/Screenshots/Screen%20Shot1.png
+        https://cloud.githubusercontent.com/assets/22332237/21077188/20f8b960-bf11-11e6-948b-ce9bbd508b45.png
         
         Create Folder Structure Based on States
         
