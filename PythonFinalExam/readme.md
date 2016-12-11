@@ -6,8 +6,10 @@ Execution of this script will clean the data and structure the data in the form 
         Usage : Pre_Analysis_Script.py
         
         Clean - Outliers
+        ![Alt text](/DataAnalysisUsingPython/blob/master/PythonFinalExam/Screenshots/Screen%20Shot1.png)
+        
         Create Folder Structure Based on States
-
+        
 
 #Analysis 1 - Average Gas Emitted per month expressed in percentage
 Provides a heat map with months on the x-axis and the percent of emission of the gases like NO2, SO2, O3 and CO in y-axis
