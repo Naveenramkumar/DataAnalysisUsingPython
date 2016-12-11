@@ -16,7 +16,7 @@ Provides a heat map with months on the x-axis and the percent of emission of the
         
         Usage : python Analysis1.py
 
-** Observations **        
+**Observations**        
 * Emission of gases like SO2 and NO2 are very high during Jan, Feb and Mar - Motor Vehicles run at high rate during this period
 * Emission of O3 gas is very high during Mar, Apr, May - The harmful sun-rays penetrate and UV-Index is very high causing skin problems during this period
         
