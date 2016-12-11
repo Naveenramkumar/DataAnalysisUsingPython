@@ -3,7 +3,7 @@
 #Pre-Analysis Script
 Execution of this script will clean the data and structure the data in the form Folders based on State
 
-        Usage : Pre_Analysis_Script.py
+        Usage : python Pre_Analysis_Script.py
         
         Clean - Outliers - Mean value of emission of gases has negative values
         https://cloud.githubusercontent.com/assets/22332237/21077188/20f8b960-bf11-11e6-948b-ce9bbd508b45.png
@@ -14,7 +14,7 @@ Execution of this script will clean the data and structure the data in the form 
 #Analysis 1 - Average Gas Emitted per month expressed in percentage
 Provides a heat map with months on the x-axis and the percent of emission of the gases like NO2, SO2, O3 and CO in y-axis
         
-        Usage : Analysis1.py
+        Usage : python Analysis1.py
 
 ** Observations **        
 * Emission of gases like SO2 and NO2 are very high during Jan, Feb and Mar - Motor Vehicles run at high rate during this period
@@ -26,7 +26,7 @@ Provides a heat map with months on the x-axis and the percent of emission of the
 * Consider we have got a data of emission of gases for today and we are unable to find for which state the emission belongs.
 * This Algorithm provides three closest points based on training dataset
         
-        Usage : Analysis2.py 25.173913 0.5217390000000001 0.0135 0.617391
+        Usage : python Analysis2.py 25.173913 0.5217390000000001 0.0135 0.617391
                 (Analysis.py NO2Mean SO2Mean O3Mean COMean)
 
         Algorithm: Closest 3 states data considered for computation of KNN Algorithm
@@ -54,7 +54,7 @@ Provides a heat map with months on the x-axis and the percent of emission of the
 * Linear regression algorithm provides the emission of these gases for the provided month and year. 
 * Map which shows the linear spread of these gases is also generated
         
-        Usage : Analysis3.py 201703
+        Usage : python Analysis3.py 201703
                 (Analysis3.py yyyymm)
                 
         Algorithm : Linear Regression
@@ -66,5 +66,5 @@ Provides a heat map with months on the x-axis and the percent of emission of the
 * User provides the state and year for which the air quality index for the gases is needed. 
 * The script iterates through the folder based on state and looks through the file with the name State_Year.csv
         
-        Usage : Analysis4.py Arizona 2015
+        Usage : python Analysis4.py Arizona 2015
                 (Aanalysis4.py State yyyy)
