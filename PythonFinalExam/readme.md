@@ -29,7 +29,7 @@ Provides a heat map with months on the x-axis and the percent of emission of the
         Usage : python Analysis2.py 25.173913 0.5217390000000001 0.0135 0.617391
                 (Analysis.py NO2Mean SO2Mean O3Mean COMean)
 
-        Algorithm: Closest 3 states data considered for computation of KNN Algorithm
+        Algorithm: Computation of KNN Algorithm provides three closest states by value
         for i in df.index.values:
                 distance = ((float(df.loc[i,"NO2Mean"])-inp1)**2 + (float(df.loc[i,"SO2Mean"])-inp2)**2 + 
                 (float(df.loc[i,"O3Mean"])-inp3)**2 + (float(df.loc[i,"COMean"])-inp4)**2)**(1/2)
