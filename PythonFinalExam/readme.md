@@ -68,3 +68,12 @@ Provides a heat map with months on the x-axis and the percent of emission of the
         
         Usage : python Analysis4.py Arizona 2015
                 (Aanalysis4.py State yyyy)
+
+#Analysis 5 - Find peak hour Ozone gas Air Quality Index
+
+**Observation**
+* Ozone gas creates pollution at a peak by 11AM - 2PM.
+* Also from Analysis 1, it was inferred that Mar, Apr and May emits large amount of O3 gas.
+* It is recommended to avoid sunlight during these periods or use necessary precautions before getting into sunlight.
+
+        Usage : python Analysis5.py
