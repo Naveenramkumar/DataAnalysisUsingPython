@@ -3,10 +3,17 @@
 #Pre-Analysis Script
 Execution of this script will clean the data and structure the data in the form Folders based on State
 
+        Usage : Pre_Analysis_Script.py
+        
+        Clean - Outliers
+        Create Folder Structure Based on States
+
+
 #Analysis 1 - Average Gas Emitted per month expressed in percentage
 Provides a heat map with months on the x-axis and the percent of emission of the gases like NO2, SO2, O3 and CO in y-axis
         
         Usage : Analysis1.py
+        
 
 #Analysis 2 - Recommending State for the specified Gas emission values - KNN Algorithm
 User specifies the input value of 4 gases, the algorithm will determine the best possible state for these gases emission specified
